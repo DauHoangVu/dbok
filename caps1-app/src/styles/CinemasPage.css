@@ -1,0 +1,122 @@
+.cinemas-page {
+  padding: 2rem 0;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.cinemas-filter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.city-select {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  background-color: var(--white);
+  font-size: 1rem;
+  min-width: 200px;
+}
+
+.cinemas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.cinema-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cinema-info {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.cinema-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.cinema-location {
+  margin-bottom: 1.5rem;
+}
+
+.cinema-location p {
+  margin: 0.5rem 0;
+}
+
+.cinema-facilities, .cinema-screens {
+  margin-bottom: 1rem;
+}
+
+.cinema-facilities h3, .cinema-screens h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.facilities-list, .screens-list {
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.facility-item {
+  background-color: var(--light-bg);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+}
+
+.screen-item {
+  background-color: var(--light-bg);
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+}
+
+.cinema-actions {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+}
+
+.no-cinemas {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--light-bg);
+  border-radius: var(--border-radius);
+}
+
+@media (max-width: 768px) {
+  .cinemas-filter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .city-select {
+    width: 100%;
+  }
+  
+  .cinemas-grid {
+    grid-template-columns: 1fr;
+  }
+} 
