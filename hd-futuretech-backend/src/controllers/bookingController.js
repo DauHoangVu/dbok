@@ -2,10 +2,10 @@ const Booking = require("../models/Booking");
 const Movie = require("../models/Movie");
 const Cinema = require("../models/Cinema");
 const mongoose = require("mongoose");
-
-// @desc    Create a new booking
-// @route   POST /api/bookings
-// @access  Private
+const dayjs = require('dayjs')
+    // @desc    Create a new booking
+    // @route   POST /api/bookings
+    // @access  Private
 exports.createBooking = async(req, res, next) => {
     try {
         const {
@@ -313,5 +313,46 @@ exports.checkSeatAvailability = async(req, res, next) => {
     } catch (err) {
         console.log(err);
         next(err);
+    }
+};
+exports.getBookingStats = async(req, res) => {
+    try {
+        const now = dayjs();
+        const currentWeekStart = now.startOf("isoWeek").toDate();
+        const currentWeekEnd = now.endOf("isoWeek").toDate();
+
+        const lastWeekStart = now.subtract(1, "week").startOf("isoWeek").toDate();
+        const lastWeekEnd = now.subtract(1, "week").endOf("isoWeek").toDate();
+
+        const [allTime, thisWeek, lastWeek] = await Promise.all([
+            Booking.aggregate([
+                { $group: { _id: null, total: { $sum: "$totalAmount" }, count: { $sum: 1 } } },
+            ]),
+            Booking.aggregate([{
+                    $match: {
+                        paymentStatus: "completed",
+                        createdAt: { $gte: currentWeekStart, $lte: currentWeekEnd },
+                    },
+                },
+                { $group: { _id: null, total: { $sum: "$totalAmount" }, count: { $sum: 1 } } },
+            ]),
+            Booking.aggregate([{
+                    $match: {
+                        paymentStatus: "completed",
+                        createdAt: { $gte: lastWeekStart, $lte: lastWeekEnd },
+                    },
+                },
+                { $group: { _id: null, total: { $sum: "$totalAmount" }, count: { $sum: 1 } } },
+            ]),
+        ]);
+
+        res.json({
+            allTime: allTime[0] || { total: 0, count: 0 },
+            thisWeek: thisWeek[0] || { total: 0, count: 0 },
+            lastWeek: lastWeek[0] || { total: 0, count: 0 },
+        });
+    } catch (err) {
+
+        res.status(500).json({ error: err.message });
     }
 };

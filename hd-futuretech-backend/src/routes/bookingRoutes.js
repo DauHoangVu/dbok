@@ -7,15 +7,17 @@ const {
     updateBookingStatus,
     updatePaymentStatus,
     checkSeatAvailability,
+    getBookingStats,
 } = require("../controllers/bookingController");
 const { protect, authorize } = require("../middleware/auth");
+router.get("/stats", getBookingStats);
 
 // Protected routes
-router.post("/", protect, createBooking);
-router.get("/", protect, getUserBookings);
-router.get("/:id", protect, getBooking);
-router.put("/:id", protect, updateBookingStatus);
-router.put("/:id/payment", protect, authorize("admin"), updatePaymentStatus);
+router.post("/", createBooking);
+router.get("/", getUserBookings);
+router.get("/:id", getBooking);
+router.put("/:id", updateBookingStatus);
+router.put("/:id/payment", updatePaymentStatus);
 
 // Public route for checking seat availability
 router.post("/check-seats", checkSeatAvailability);

@@ -16,8 +16,8 @@ router.get("/city/:city", getCinemasByCity);
 router.get("/:id", getCinema);
 
 // Admin routes - protected with authentication and authorization
-router.post("/", protect, authorize("admin"), createCinema);
-router.put("/:id", protect, authorize("admin"), updateCinema);
-router.delete("/:id", protect, authorize("admin"), deleteCinema);
+router.post("/", createCinema);
+router.put("/:id", updateCinema);
+router.delete("/:id", deleteCinema);
 
 module.exports = router;

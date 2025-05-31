@@ -12,6 +12,11 @@ import RegisterPage from "./pages/RegisterPage"
 import ProfilePage from "./pages/ProfilePage"
 import NotFoundPage from "./pages/NotFoundPage"
 import "./styles/global.css"
+import AdminLayout from "./pages/AdminPage"
+import AdminDashboard from "./pages/AdminDashboard"
+import MovieManagement from "./pages/MovieManagement"
+import CinemaManagement from "./pages/CinemaManagement"
+import Analytic from "./pages/Analytic"
 
 function App() {
   return (
@@ -30,6 +35,11 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="*" element={<NotFoundPage />} />
+              <Route path="/admin" element={<AdminLayout />}>
+            <Route path="/admin/movies" element={<MovieManagement />} />
+            <Route path="/admin/cinema" element={<CinemaManagement />} />
+            <Route path="/admin/analytic" element={<Analytic />} />
+          </Route>
             </Routes>
           </main>
           <Footer />

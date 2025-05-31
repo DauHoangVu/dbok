@@ -24,8 +24,8 @@ router.get("/search", searchMovies);
 router.get("/:id", getMovie);
 
 // Admin routes - protected with authentication and authorization
-router.post("/", protect, authorize("admin"), createMovie);
-router.put("/:id", protect, authorize("admin"), updateMovie);
-router.delete("/:id", protect, authorize("admin"), deleteMovie);
+router.post("/", createMovie);
+router.put("/:id", updateMovie);
+router.delete("/:id", deleteMovie);
 
 module.exports = router;

@@ -10,6 +10,7 @@ const userRoutes = require("./routes/userRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 
+const cinemaRoutes = require("./routes/cinemaRoutes");
 // Config
 dotenv.config();
 const app = express();
@@ -28,6 +29,8 @@ mongoose
 
 // Routes
 app.use("/api/movies", movieRoutes);
+app.use("/api/cinemas", cinemaRoutes);
+
 app.use("/api/users", userRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/reviews", reviewRoutes);
