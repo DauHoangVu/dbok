@@ -1,6 +1,6 @@
 /* Hero Section */
 .hero-section {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4)),
+    background: linear-gradient(to right, rgba(39, 35, 35, 0.8), rgba(239, 233, 233, 0.4)),
       url("https://via.placeholder.com/1600x800") center / cover no-repeat;
     height: 500px;
     display: flex;

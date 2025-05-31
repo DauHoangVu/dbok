@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^6.0.0",
+    "@stripe/react-stripe-js": "^3.7.0",
+    "@stripe/stripe-js": "^7.3.1",
     "antd": "^5.25.3",
     "axios": "^1.8.4",
     "movie-ticket-booking": "file:",

@@ -17,6 +17,8 @@ import AdminDashboard from "./pages/AdminDashboard"
 import MovieManagement from "./pages/MovieManagement"
 import CinemaManagement from "./pages/CinemaManagement"
 import Analytic from "./pages/Analytic"
+import ShowtimePage from "./pages/ShowtimePage";
+import PromotionPage from "./pages/PromotionPage"
 
 function App() {
   return (
@@ -31,6 +33,8 @@ function App() {
               <Route path="/movies/:id" element={<MovieDetailPage />} />
               <Route path="/movies/:id/booking" element={<BookingPage />} />
               <Route path="/cinemas" element={<CinemasPage />} />
+              <Route path="/promotions" element={<PromotionPage/>} />
+              <Route path="/showtimes" element={<ShowtimePage/>} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/profile" element={<ProfilePage />} />

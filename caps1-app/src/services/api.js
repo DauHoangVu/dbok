@@ -149,14 +149,13 @@ export const getCinemasByCity = async(city) => {
     }
 }
 
-export const createBooking = async(bookingData) => {
-    try {
-        const response = await api.post("/bookings", bookingData)
-        return response.data
-    } catch (error) {
-        throw handleError(error, "Đặt vé thất bại")
-    }
-}
+export const createBooking = async (data) => {
+    const response = await axios.post(`${API_BASE_URL}/bookings`, data, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    });
+    return response;
+  };
+  
 
 export const getUserBookings = async() => {
     try {
@@ -239,5 +238,33 @@ export const likeReview = async(reviewId) => {
         throw handleError(error, "Không thể thích đánh giá")
     }
 }
+export const getShowtimes = async (city, date, startTime = "00:00", endTime = "23:59") => {
+    try {
+      const response = await api.get("/showtimes", {
+        params: { city, date, startTime, endTime }
+      });
+      return response.data; // hoặc response.data.data tùy API trả về
+    } catch (error) {
+      throw handleError(error, "Không thể lấy lịch chiếu phim");
+    }
+  };
+  
+  export const getPromotions = async () => {
+    try {
+      const response = await api.get("/promotions");
+      return response.data; // hoặc response.data.data tùy API trả về
+    } catch (error) {
+      throw handleError(error, "Không thể lấy danh sách khuyến mãi");
+    }
+  };
+
+  export const createPaymentIntent = async (amount) => {
+    const response = await axios.post(`${API_BASE_URL}/bookings/create-payment-intent`, { amount });
+    return response.data;
+  };
+  
+
+  
+    
 
 export default api

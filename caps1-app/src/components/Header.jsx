@@ -46,6 +46,11 @@ const Header = () => {
                   Khuyến mãi
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/showtimes" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+                  Lịch Chiếu
+                </Link>
+              </li>
             </ul>
           </nav>
 

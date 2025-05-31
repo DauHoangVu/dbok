@@ -11,6 +11,8 @@ const bookingRoutes = require("./routes/bookingRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 
 const cinemaRoutes = require("./routes/cinemaRoutes");
+const promotionRoutes = require("./routes/promotionRoutes");
+const showtimeRoutes = require("./routes/showtimeRoutes")
 // Config
 dotenv.config();
 const app = express();
@@ -34,6 +36,8 @@ app.use("/api/cinemas", cinemaRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/promotions", promotionRoutes);
+app.use("/api/showtimes", showtimeRoutes);
 
 // Re-route review routes for nested URL pattern
 app.use("/api/movies/:movieId/reviews", reviewRoutes);

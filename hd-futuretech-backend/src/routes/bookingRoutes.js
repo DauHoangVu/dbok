@@ -8,11 +8,13 @@ const {
     updatePaymentStatus,
     checkSeatAvailability,
     getBookingStats,
+    createPaymentIntent,
 } = require("../controllers/bookingController");
 const { protect, authorize } = require("../middleware/auth");
 router.get("/stats", getBookingStats);
 
 // Protected routes
+router.post("/create-payment-intent", createPaymentIntent);
 router.post("/", createBooking);
 router.get("/", getUserBookings);
 router.get("/:id", getBooking);
